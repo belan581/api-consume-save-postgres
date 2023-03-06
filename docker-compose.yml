@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+  db:
+    image: postgres
+    container_name: postgres_newsapi
+    ports:
+      - 5432:5432
+    env_file:
+      - ./.env
+  adminer:
+    image: adminer
+    ports:
+      - 8080:8080
+    depends_on:
+      - db
