@@ -1,6 +1,5 @@
 import datetime
 import os
-import psycopg2
 
 from newsapi import NewsApiClient
 from newsapi.newsapi_exception import NewsAPIException
@@ -22,11 +21,14 @@ def get_news_data(api_key):
     last_day = datetime.date.today() - datetime.timedelta(days=1)
     try:
         most_popular_news = newsapi.get_everything(
-            q='python',
+            q='kjasksj',
             from_param=last_day,
             page=PAGE,
             page_size=LIMIT)
-        articles = most_popular_news.get("articles","")
+        if most_popular_news.get("status") == 'ok' and most_popular_news.get("totalResults") > 0:
+            articles = most_popular_news.get("articles","")
+        else:
+            return "There no data in reponse to save in local DB"
     except (ValueError, NewsAPIException) as e:
         print(e.args)
     else:
@@ -40,7 +42,6 @@ def create_news(news, connection=None):
     :param news: A list of dictionaries containing news articles.
     :param connection: The connection to the MySQL database.
     """
-    # database.create_table()
     try:
         database.create_table()
         database.insert_data(news)
