@@ -22,15 +22,24 @@ venv\Scripts\activate.bat
 ```
 pip install -r requirements.txt
 ```
-5. Create the container of postgres
+5. Create an .env file with your secrets
+```
+NEWSAPI_API_KEY=apikeystring
+POSTGRES_USER=postgres_user
+POSTGRES_PASSWORD=postrgres_password
+POSTGRES_DB=newsapi
+POSTGREST_HOST=localhost
+POSTGREST_PORT=5432
+```
+6. Create the container of postgres
 ```
 docker compose up --build
 ```
-6. Run main.py
+7. Run main.py
 ```
 python main.py
 ```
-7. You can access to postgres via adminer. Open your browser and copy this url
+8. You can access to postgres via adminer. Open your browser and copy this url
 ```
 http://127.0.0.1:8080
 Database engine: PostgreSQL
