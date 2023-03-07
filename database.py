@@ -1,8 +1,9 @@
 import json
 import os
-
+from dotenv import load_dotenv
 import psycopg2
-from psycopg2.extensions import AsIs
+
+load_dotenv()
 
 conn = psycopg2.connect(database=os.getenv('POSTGRES_DB'),
                         host=os.getenv('POSTGREST_HOST'),
