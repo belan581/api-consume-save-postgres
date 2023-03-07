@@ -22,7 +22,7 @@ def create_table():
             description text NULL,\
             url character varying(300) NULL,\
             urlToImage character varying(350) NULL,\
-            publishedAt timestamp NULL,\
+            publishedAt date NULL,\
             content text NULL);'''
     
     cursor.execute(sql)
